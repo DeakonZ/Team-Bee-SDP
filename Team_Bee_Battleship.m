@@ -21,7 +21,7 @@ bot_ship_sprite = 8;
 hit_sprite = 9;
 miss_sprite = 10;
 
-%Declare and initalize the shot display.
+%Declare and initalize the shot matrix.
 shotDisplay = ones(10, 21);
 
 %Draw base board.
@@ -38,12 +38,31 @@ boardDisplay(2,3) = left_ship_sprite;
 %Redraw the scene.
 drawScene(battleshipScene,boardDisplay)
 
-%Call the player shoot function and assign the output to the shot display.
-shotDisplay = playerShoot(battleshipScene, boardDisplay, shotDisplay);
+%TEMP SHIPMATRIX
+m = ones(10, 10);
 
-%Redraw the scene.
-drawScene(battleshipScene, boardDisplay, shotDisplay)
+m(1,1) = 3;
+m(1,2) = 3;
+m(1,3) = 3;
 
-m = ones(10, 10)
+m(7,5) = 3;
+m(6,5) = 3;
+m(5,5) = 3;
 
-s = checkSunk(battleshipScene, shotDisplay, m)
+m(10,1) = 5;
+m(10,2) = 5;
+m(10,3) = 5;
+m(10,4) = 5;
+m(10,5) = 5;
+%TEMP SHIPMATRIX
+
+k = 1;
+while k <= 15
+    %Call the player shoot function and assign the output to the shot display.
+    [shotDisplay, boardDisplay] = playerShoot(battleshipScene, boardDisplay, shotDisplay, m);
+
+    %Redraw the scene.
+    drawScene(battleshipScene, boardDisplay, shotDisplay)
+    
+    k = k + 1;
+end
