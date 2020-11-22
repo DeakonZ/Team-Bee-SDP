@@ -1,5 +1,13 @@
 function finished_matrix = build_ship(obj,ship_length,matrix)
-fprintf("\n Build a ship that is %.f tiles long\n", ship_length)
+if ship_length == 5
+    title("Place a ship that is 5 tiles long")
+elseif ship_length == 4
+    title("Place a ship that is 4 tiles long")
+elseif ship_length == 3
+    title("Place a ship that is 3 tiles long")
+elseif ship_length == 2
+    title("Place a ship that is 2  tiles long")
+end
 x1 = 0;
 x2 = 0;
 y1 = 0;
@@ -45,4 +53,5 @@ horizontal = 0;
       end
   end
         finished_matrix = matrix;
+        title("")
 end
