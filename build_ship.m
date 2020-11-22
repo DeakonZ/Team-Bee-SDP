@@ -1,4 +1,5 @@
 function finished_matrix = build_ship(obj,ship_length,matrix)
+%make a title to tell the player how long of a ship to place
 if ship_length == 5
     title("Place a ship that is 5 tiles long")
 elseif ship_length == 4
@@ -14,11 +15,13 @@ y1 = 0;
 y2 = 0;
 length = 0;
 horizontal = 0;
-    while length ~= ship_length
+
+
+    while length ~= ship_length %make the player pick tiles until their ship is the desired length
        [x1,y1] = getMouseInput(obj);
        [x2,y2] = getMouseInput(obj);
        
-       if (x1 == x2 && y1~=y2) || (y1 == y2 && x1 ~= x2)
+       if (x1 == x2 && y1~=y2) || (y1 == y2 && x1 ~= x2) %this if statement make a variable, length, so we have an exact distance between the points and determines the direction
            if (y1 == y2)
                horizontal = 1;
                if (x2 > x1)
@@ -40,7 +43,7 @@ horizontal = 0;
   for i = 0:(length-1)
       if (horizontal == 1)
           if (x2 > x1)
-              matrix(x1+i, y1) = length;
+              matrix(x1+i, y1) = length; %this function outputs a matrix of the player board and the locations of the ships
           else
               matrix(x2+i, y1) = length;
           end

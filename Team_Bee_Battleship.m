@@ -31,6 +31,7 @@ ship_matrix = ones(10,10);
 vertical = 0;
 ship_complete = 0;
 finished_matrix = build_ship(battleship_scene,5,ship_matrix);
+%these nested loops take the function outputted matrix and uses it to change the board matrix to show the ships
 for i = 1:10
    for j = 1:10
       if finished_matrix(i,j) == 5
