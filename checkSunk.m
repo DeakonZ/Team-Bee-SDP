@@ -49,7 +49,7 @@ if (size(shipX) > 0 & size(shipY) > 0)
                 boardDisplay(shipX(2), shipY(2) + 11) = vert_ship_sprite;
 
                 %Set the bottom ship sprite location.
-                boardDisplay(shipX(3), shipY(3) + 11) = bot_ship_sprite
+                boardDisplay(shipX(3), shipY(3) + 11) = bot_ship_sprite;
             end
         end
 
