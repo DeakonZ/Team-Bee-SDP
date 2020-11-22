@@ -1,13 +1,13 @@
-clc
 clear
+clc
 
 %Team Bee Battleship Script
 %Written by Parker Stuebs, Caleb Bucher, Varsha Govardhanam, Deakon Ziegler
 
-%%Base Board Creation
+%% Base Board Creation
 
 %Initialize scene
-battleship_scene = simpleGameEngine('Battleship.png', 84, 84);
+battleshipScene = simpleGameEngine('Battleship.png', 84, 84);
 
 %Declaration of sprite variables with numerical values.
 blank_sprite = 1;
@@ -21,7 +21,48 @@ bot_ship_sprite = 8;
 hit_sprite = 9;
 miss_sprite = 10;
 
+%Declare and initalize the shot matrix.
+shotDisplay = ones(10, 21);
+
 %Draw base board.
-board_display = water_sprite * ones(10, 21);
-board_display(:, 11) = blank_sprite;
-drawScene(battleship_scene, board_display)
+boardDisplay = water_sprite * ones(10, 21);
+boardDisplay(:, 11) = blank_sprite;
+drawScene(battleshipScene, boardDisplay)
+
+%% Game Logic
+
+% Place a ship
+% Place the left pointing end of the ship at position (2,3)
+boardDisplay(2,3) = left_ship_sprite;
+
+%Redraw the scene.
+drawScene(battleshipScene,boardDisplay)
+
+%TEMP SHIPMATRIX
+m = ones(10, 10);
+
+m(1,1) = 3;
+m(1,2) = 3;
+m(1,3) = 3;
+
+m(7,5) = 3;
+m(6,5) = 3;
+m(5,5) = 3;
+
+m(10,1) = 5;
+m(10,2) = 5;
+m(10,3) = 5;
+m(10,4) = 5;
+m(10,5) = 5;
+%TEMP SHIPMATRIX
+
+k = 1;
+while k <= 15
+    %Call the player shoot function and assign the output to the shot display.
+    [shotDisplay, boardDisplay] = playerShoot(battleshipScene, boardDisplay, shotDisplay, m);
+
+    %Redraw the scene.
+    drawScene(battleshipScene, boardDisplay, shotDisplay)
+    
+    k = k + 1;
+end
