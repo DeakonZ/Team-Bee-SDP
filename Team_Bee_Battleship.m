@@ -21,50 +21,36 @@ bot_ship_sprite = 8;
 hit_sprite = 9;
 miss_sprite = 10;
 
-%Declare and initalize the shot matrix.
-shotDisplay = ones(10, 21);
-
 %Draw base board.
-boardDisplay = water_sprite * ones(10, 21);
-boardDisplay(:, 11) = blank_sprite;
-drawScene(battleshipScene, boardDisplay)
+boardDisplay = water_sprite * ones(10, 21);     %Creates a board display consisting of only water sprites.
+boardDisplay(:, 11) = blank_sprite;             %Creates the partition between the two boards.
+drawScene(battleshipScene, boardDisplay)        %Displays the scene.   
 
+%Game Variables
+shotDisplay = ones(10, 21);     %Matrix Holds the hit/miss sprites for display.
+playerShips = ones(10, 10);     %Matrix holds the locations of the player's ships.
+computerShips = ones(10, 10);   %Matrix holds the locations of the computer's ships.
+playerSunk = 0;                 %Holds the number of player ships sunk.
+computerSunk = 0;               %Holds the number of computer ships sunk.
 
-playerShips = ones(10,10);
+%% playerPlacement and computerPlacement Test Code
 
 [boardDisplay, shipMatrix] = playerPlacement(battleshipScene, boardDisplay, playerShips);
 
-%% Game Logic
-
-
+computerShips = computerPlacement(computerShips);
 
 %% playerShoot and checkSunk Test Code
 
-%TEMP SHIPMATRIX
-m = ones(10, 10);
-
-m(1,1) = 3;
-m(1,2) = 3;
-m(1,3) = 3;
-
-m(7,5) = 3;
-m(6,5) = 3;
-m(5,5) = 3;
-
-m(10,1) = 5;
-m(10,2) = 5;
-m(10,3) = 5;
-m(10,4) = 5;
-m(10,5) = 5;
-%TEMP SHIPMATRIX
-
 k = 1;
-while k <= 15
+while k <= 100
     %Call the player shoot function and assign the output to the shot display.
-    [shotDisplay, boardDisplay] = playerShoot(battleshipScene, boardDisplay, shotDisplay, m);
+    [shotDisplay, boardDisplay] = playerShoot(battleshipScene, boardDisplay, shotDisplay, computerShips);
 
     %Redraw the scene.
     drawScene(battleshipScene, boardDisplay, shotDisplay)
     
     k = k + 1;
 end
+
+%% Game Logic
+
