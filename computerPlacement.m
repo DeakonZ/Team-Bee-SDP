@@ -1,32 +1,6 @@
-clc
-clear
-
-
-% Initialize scene
-my_scene = simpleGameEngine('Battleship.png',84,84);
-
-% Set up variables to name the various sprites
-blank_sprite = 1;
-water_sprite = 2;
-left_ship_sprite = 3;
-horiz_ship_sprite = 4;
-right_ship_sprite = 5;
-top_ship_sprite = 6;
-vert_ship_sprite = 7;
-bot_ship_sprite = 8;
-hit_sprite = 9;
-miss_sprite = 10;
-
-% Display empty board   
- board_display = water_sprite * ones(10,21);
-board_display(:,11) = blank_sprite;
-drawScene(my_scene,board_display)
-x=13;
-
-%% Creating initial coordinates for the ships
-
-
-matrix = ones(10, 10);
+function [matrix] = computerPlacement(matrix)
+%COMPUTERPLACEMENT Summary of this function goes here
+%   Detailed explanation goes here
 
 shipSize = 5;
 
@@ -36,8 +10,8 @@ shipSize = 5;
 for k=1:5
 
     % creates 2 random x and y coordinates
-    coord_x =  randi([1,10],1)
-    coord_y =  randi([1,10],1)
+    coord_x =  randi([1,10],1);
+    coord_y =  randi([1,10],1);
 
     % creates a random number between 0 or 1
     side = randi([0,1],1);
@@ -74,7 +48,7 @@ for k=1:5
         % Fills our 10 by 10 matrix with the ship size value to indicate where
         % the ship is placed
         for i = 0: shipSize-1
-            matrix(coord_y + i, coord_x) = shipSize
+            matrix(coord_y + i, coord_x) = shipSize;
         end
         
 
@@ -83,7 +57,7 @@ for k=1:5
         % Fills our 10 by 10 matrix with the ship size value to indicate where
         % the ship is placed
         for i = 0: shipSize-1
-            matrix(coord_y, coord_x+i) = shipSize
+            matrix(coord_y, coord_x+i) = shipSize;
         end
        
     
@@ -95,7 +69,5 @@ for k=1:5
     end
 
 end
+end
 
-
-%%
-drawScene(my_scene,board_display)
