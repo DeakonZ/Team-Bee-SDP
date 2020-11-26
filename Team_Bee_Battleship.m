@@ -1,12 +1,13 @@
+%Team Bee Battleship Script
+%Written by Parker Stuebs, Caleb Bucher, Varsha Govardhanam, Deakon Ziegler
+%Created for the ENGR 1181.01 Software Design Project.
+
 clear
 clc
 
-%Team Bee Battleship Script
-%Written by Parker Stuebs, Caleb Bucher, Varsha Govardhanam, Deakon Ziegler
-
 %% Base Board Creation
 
-%Initialize scene
+%Initialize scene using the Battleship.png sprites.
 battleshipScene = simpleGameEngine('Battleship.png', 84, 84);
 
 %Declaration of sprite variables with numerical values.
@@ -35,22 +36,35 @@ computerSunk = 0;               %Holds the number of computer ships sunk.
 
 %% playerPlacement and computerPlacement Test Code
 
-[boardDisplay, shipMatrix] = playerPlacement(battleshipScene, boardDisplay, playerShips);
+%[boardDisplay, shipMatrix] = playerPlacement(battleshipScene, boardDisplay, playerShips);
 
+for i = 1:100
 computerShips = computerPlacement(computerShips);
+
+computerShips = ones(10, 10);
+end
 
 %% playerShoot and checkSunk Test Code
 
 k = 1;
 while k <= 100
     %Call the player shoot function and assign the output to the shot display.
-    [shotDisplay, boardDisplay] = playerShoot(battleshipScene, boardDisplay, shotDisplay, computerShips);
+    [shotDisplay, boardDisplay, playerSunk] = playerShoot(battleshipScene, boardDisplay, shotDisplay, computerShips, playerSunk);
 
     %Redraw the scene.
     drawScene(battleshipScene, boardDisplay, shotDisplay)
+    
+    playerSunk
     
     k = k + 1;
 end
 
 %% Game Logic
-
+while playerSunk ~= 5 && computerSunk ~= 5
+    %Check if either the player or computer has sunk all of the ships.
+    if playerSunk == 5
+        title('The Player has sunk all of the Computers ships!')
+    elseif computerSunk == 5
+        title('The Computer has sunk all of the Players ships!')
+    end 
+end

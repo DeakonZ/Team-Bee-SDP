@@ -1,4 +1,7 @@
 function finished_matrix = build_ship(obj,ship_length,matrix)
+%BUILD_SHIP Creates the ships.
+
+
 %make a title to tell the player how long of a ship to place
 if ship_length == 5
     title("Place a ship that is 5 tiles long")

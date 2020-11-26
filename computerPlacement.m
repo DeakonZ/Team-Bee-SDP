@@ -1,6 +1,6 @@
 function [matrix] = computerPlacement(matrix)
-%COMPUTERPLACEMENT Summary of this function goes here
-%   Detailed explanation goes here
+%COMPUTERPLACEMENT Randomly places ships in a 10x10 matrix.
+%   Returns the 10x10 matrix with the ships placed.
 
 shipSize = 5;
 

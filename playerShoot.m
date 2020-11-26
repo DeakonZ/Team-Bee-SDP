@@ -1,5 +1,5 @@
-%Prompts the player to pick a location to shoot.
-function [shotDisplay, boardDisplay] = playerShoot(obj, boardDisplay, shotDisplay, shipMatrix)
+function [shotDisplay, boardDisplay, playerSunk] = playerShoot(obj, boardDisplay, shotDisplay, shipMatrix, playerSunk)
+%PLAYERSHOOT Prompts the player to pick a location to shoot.
 
 %Initial prompt for player to choose a tile.
 title('Choose a location to shoot')
@@ -25,7 +25,7 @@ end
 %Loop through each possible ship length
 for shipLength = 2: 5
     %Check if the ship has been sunk.
-    boardDisplay = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength);
+    [boardDisplay, playerSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, playerSunk);
 
     %Redraw the scene.
     drawScene(obj, boardDisplay, shotDisplay)

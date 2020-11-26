@@ -1,4 +1,6 @@
-function boardDisplay = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength)
+function [boardDisplay, numSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, numSunk)
+%CHECKSUNK Checks if all of the tiles of a ship have been hit, if so returns the boardDisplay with the sunk ship displayed.
+
 %Ship Sprite Variables
 left_ship_sprite = 3;
 horiz_ship_sprite = 4;
@@ -31,25 +33,32 @@ if (size(shipX) > 0 & size(shipY) > 0)
 
         %Check if all of the parts of the ship have been hit.
         if (partsHit == 3)
-            %Check if the ship is horizontal.
-            if (shipX(1) == shipX(2))
-                %Set the left ship sprite location.
-                boardDisplay(shipX(1), shipY(1) + 11) = left_ship_sprite;
+            %Check if a ship has aready been placed at this location.
+            if (boardDisplay(shipX(1), shipY(1) + 11) < left_ship_sprite && boardDisplay(shipX(3), shipY(3) + 11) < left_ship_sprite)
+                %Check if the ship is horizontal.
+                if (shipX(1) == shipX(2))
+                    %Set the left ship sprite location.
+                    boardDisplay(shipX(1), shipY(1) + 11) = left_ship_sprite;
 
-                %Set the horizontal ship sprite location.
-                boardDisplay(shipX(2), shipY(2) + 11) = horiz_ship_sprite;
+                    %Set the horizontal ship sprite location.
+                    boardDisplay(shipX(2), shipY(2) + 11) = horiz_ship_sprite;
 
-                %Set the right ship sprite location.
-                boardDisplay(shipX(3), shipY(3) + 11) = right_ship_sprite;
-            else
-                %Set the top ship sprite location.
-                boardDisplay(shipX(1), shipY(1) + 11) = top_ship_sprite;
+                    %Set the right ship sprite location.
+                    boardDisplay(shipX(3), shipY(3) + 11) = right_ship_sprite;
 
-                %Set the vertical ship sprite location.
-                boardDisplay(shipX(2), shipY(2) + 11) = vert_ship_sprite;
+                else
+                    %Set the top ship sprite location.
+                    boardDisplay(shipX(1), shipY(1) + 11) = top_ship_sprite;
 
-                %Set the bottom ship sprite location.
-                boardDisplay(shipX(3), shipY(3) + 11) = bot_ship_sprite;
+                    %Set the vertical ship sprite location.
+                    boardDisplay(shipX(2), shipY(2) + 11) = vert_ship_sprite;
+
+                    %Set the bottom ship sprite location.
+                    boardDisplay(shipX(3), shipY(3) + 11) = bot_ship_sprite;
+                end
+
+                %Increment the 'numSunk' variable.
+                numSunk = numSunk + 1;
             end
         end
 
@@ -67,25 +76,31 @@ if (size(shipX) > 0 & size(shipY) > 0)
 
     %Check if all of the parts of the ship have been hit.
     if (partsHit == 3)
-        %Check if the ship is horizontal.
-        if (shipX(4) == shipX(5))
-            %Set the left ship sprite location.
-            boardDisplay(shipX(4), shipY(4) + 11) = left_ship_sprite;
+        %Check if a ship has aready been placed at this location.
+        if (boardDisplay(shipX(4), shipY(4) + 11) < left_ship_sprite && boardDisplay(shipX(6), shipY(6) + 11) < left_ship_sprite)
+            %Check if the ship is horizontal.
+            if (shipX(4) == shipX(5))
+                %Set the left ship sprite location.
+                boardDisplay(shipX(4), shipY(4) + 11) = left_ship_sprite;
 
-            %Set the horizontal ship sprite location.
-            boardDisplay(shipX(5), shipY(5) + 11) = horiz_ship_sprite;
+                %Set the horizontal ship sprite location.
+                boardDisplay(shipX(5), shipY(5) + 11) = horiz_ship_sprite;
 
-            %Set the right ship sprite location.
-            boardDisplay(shipX(6), shipY(6) + 11) = right_ship_sprite;
-        else
-            %Set the top ship sprite location.
-            boardDisplay(shipX(4), shipY(4) + 11) = top_ship_sprite;
+                %Set the right ship sprite location.
+                boardDisplay(shipX(6), shipY(6) + 11) = right_ship_sprite;
+            else
+                %Set the top ship sprite location.
+                boardDisplay(shipX(4), shipY(4) + 11) = top_ship_sprite;
 
-            %Set the vertical ship sprite location.
-            boardDisplay(shipX(5), shipY(5) + 11) = vert_ship_sprite;
+                %Set the vertical ship sprite location.
+                boardDisplay(shipX(5), shipY(5) + 11) = vert_ship_sprite;
 
-            %Set the bottom ship sprite location.
-            boardDisplay(shipX(6), shipY(6) + 11) = bot_ship_sprite;
+                %Set the bottom ship sprite location.
+                boardDisplay(shipX(6), shipY(6) + 11) = bot_ship_sprite;
+            end
+            
+            %Increment the 'numSunk' variable.
+            numSunk = numSunk + 1;
         end
     end
 
@@ -102,36 +117,40 @@ if (size(shipX) > 0 & size(shipY) > 0)
 
         %Check if the number of parts hit is equal to the ship length.
         if (partsHit == shipLength)
-            %Check if the ship is horizontal.
-            if (shipX(1) == shipX(2))
-                %Set the left ship sprite location.
-                boardDisplay(shipX(1), shipY(1) + 11) = left_ship_sprite;
+            %Check if a ship has aready been placed at this location.
+            if (boardDisplay(shipX(1), shipY(1) + 11) < left_ship_sprite && boardDisplay(shipX(shipLength), shipY(shipLength) + 11) < left_ship_sprite)
+                %Check if the ship is horizontal.
+                if (shipX(1) == shipX(2))
+                    %Set the left ship sprite location.
+                    boardDisplay(shipX(1), shipY(1) + 11) = left_ship_sprite;
 
-                %Starting at 2 loop until ship length minus 1.
-                for index = 2: shipLength - 1
-                    %Set the horizontal ship sprite location.
-                    boardDisplay(shipX(index), shipY(index) + 11) = horiz_ship_sprite;
+                    %Starting at 2 loop until ship length minus 1.
+                    for index = 2: shipLength - 1
+                        %Set the horizontal ship sprite location.
+                        boardDisplay(shipX(index), shipY(index) + 11) = horiz_ship_sprite;
+                    end
+
+                    %Set the right ship sprite location.
+                    boardDisplay(shipX(shipLength), shipY(shipLength) + 11) = right_ship_sprite;
+                else
+                    %Set the top ship sprite location.
+                    boardDisplay(shipX(1), shipY(1) + 11) = top_ship_sprite;
+
+                    %Starting at 2 loop until ship length minus 1.
+                    for index = 2: shipLength - 1
+                        %Set the vertical ship sprite location.
+                        boardDisplay(shipX(index), shipY(index) + 11) = vert_ship_sprite;
+                    end
+
+                    %Set the bottom ship sprite location.
+                    boardDisplay(shipX(shipLength), shipY(shipLength) + 11) = bot_ship_sprite;
                 end
-
-                %Set the right ship sprite location.
-                boardDisplay(shipX(shipLength), shipY(shipLength) + 11) = right_ship_sprite;
-            else
-                %Set the top ship sprite location.
-                boardDisplay(shipX(1), shipY(1) + 11) = top_ship_sprite;
-
-                %Starting at 2 loop until ship length minus 1.
-                for index = 2: shipLength - 1
-                    %Set the vertical ship sprite location.
-                    boardDisplay(shipX(index), shipY(index) + 11) = vert_ship_sprite;
-                end
-
-                %Set the bottom ship sprite location.
-                boardDisplay(shipX(shipLength), shipY(shipLength) + 11) = bot_ship_sprite;
-            end 
+                
+                %Increment the 'numSunk' variable.
+                numSunk = numSunk + 1;
+            end
         end
     end
 end
 
 end
-
-
