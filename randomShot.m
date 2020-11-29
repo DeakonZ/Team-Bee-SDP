@@ -26,14 +26,14 @@ else
     shotDisplay(shotRow, shotCol) = miss_sprite;
 end
 
-%Loop through each possible ship length
-for shipLength = 2: 5
-    %Check if the ship has been sunk.
-    [boardDisplay, numSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, numSunk);
-
-    %Redraw the scene.
-    drawScene(obj, boardDisplay, shotDisplay)
-end
+% %Loop through each possible ship length
+% for shipLength = 2: 5
+%     %Check if the ship has been sunk.
+%     [boardDisplay, numSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, numSunk);
+% 
+%     %Redraw the scene.
+%     drawScene(obj, boardDisplay, shotDisplay)
+% end
 
 end
 

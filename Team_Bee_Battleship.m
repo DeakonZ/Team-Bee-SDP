@@ -23,9 +23,10 @@ hit_sprite = 9;
 miss_sprite = 10;
 
 %Draw base board.
-boardDisplay = water_sprite * ones(10, 21);     %Creates a board display consisting of only water sprites.
-boardDisplay(:, 11) = blank_sprite;             %Creates the partition between the two boards.
-drawScene(battleshipScene, boardDisplay)        %Displays the scene.   
+boardDisplay = water_sprite * ones(10, 21);                     %Creates a board display consisting of only water sprites.
+boardDisplay(:, 11) = blank_sprite;                             %Creates the partition between the two boards.
+drawScene(battleshipScene, boardDisplay)                        %Displays the scene.
+set(battleshipScene.my_figure, 'Position', [286 258 1350 708])  %Resize the display to better fit the scoreboard.
 
 %Game Variables
 shotDisplay = ones(10, 21);     %Matrix Holds the hit/miss sprites for display.
@@ -37,7 +38,7 @@ computerSunk = 0;               %Holds the number of computer ships sunk.
 %% Game Logic
 
 %Display the starting score.
-xlabel({'Ships Sunk', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
+xlabel({'Score', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 
 %Prompt the player to place their ships.
 [boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
@@ -63,5 +64,5 @@ while playerSunk ~= 5 && computerSunk ~= 5
     end 
     
     %Update the current score.
-    xlabel({'Ships Sunk', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
+    xlabel({'Score', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 end

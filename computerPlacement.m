@@ -33,15 +33,24 @@ for k=1:5
             while(matrix(coord_y+z, coord_x) > 1 )
                 coord_x =  randi([1,10],1);
                 coord_y =  randi([1,10],1);
+                % Fixed bug #1
+                while(coord_y + (shipSize - 1) > 10 )
+                    coord_y =  randi([1,10],1);
+                end
             end
+            
         else 
             while(matrix(coord_y, coord_x+z) > 1 )
                 coord_x =  randi([1,10],1);
                 coord_y =  randi([1,10],1);
+                
+                while(coord_x + (shipSize - 1) > 10 )
+                    coord_x =  randi([1,10],1);
+                end
             end
+            
         end
     end
-
 
     % If side equals to 0 then it dispalys a vertical ship
     if(side == 0)

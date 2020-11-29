@@ -27,7 +27,7 @@ else
 end
 
 %Loop through each possible ship length
-for shipLength = 2: 5
+for shipLength = 2 : 5
     %Check if the ship has been sunk.
     [boardDisplay, playerSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, playerSunk);
 
