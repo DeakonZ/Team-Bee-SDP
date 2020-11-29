@@ -124,7 +124,7 @@ ship_complete = 0;
 finished_matrix = build_ship(obj,3,finished_matrix);
 for i = 1:10
    for j = 1:10
-      if finished_matrix(i,j) == 3
+      if finished_matrix(i,j) == 3 && board_display(i,j) == 2
          if i ~= 10
              if finished_matrix(i+1,j) == finished_matrix(i,j)
                  vertical = 1;
