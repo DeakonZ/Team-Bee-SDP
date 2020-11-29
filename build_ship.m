@@ -59,5 +59,4 @@ horizontal = 0;
       end
   end
         title("")
-        disp(matrix)
 end
