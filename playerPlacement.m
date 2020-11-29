@@ -1,4 +1,4 @@
-function [board_display, ship_matrix] = playerPlacement(obj, board_display, ship_matrix)
+function [board_display, finished_matrix] = playerPlacement(obj, board_display, ship_matrix)
 %PLAYERPLACEMENT Prompts the player to choose the locations of ships on the board.
 
 %Declaration of ship sprite variables with numerical values.

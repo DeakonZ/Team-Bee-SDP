@@ -1,6 +1,10 @@
 function [shotDisplay, boardDisplay, playerSunk] = playerShoot(obj, boardDisplay, shotDisplay, shipMatrix, playerSunk)
 %PLAYERSHOOT Prompts the player to pick a location to shoot.
 
+%Sprite variables.
+hit_sprite = 9;
+miss_sprite = 10;
+
 %Initial prompt for player to choose a tile.
 title('Choose a location to shoot')
 [shotRow, shotCol, shotButton] = getMouseInput(obj);
@@ -16,10 +20,10 @@ end
 %Check if the location clicked by the player is a ship.
 if shipMatrix(shotRow, shotCol - 11) >= 2 && shipMatrix(shotRow, shotCol - 11) <= 5
     %Add the hit sprite to the shotDisplay matrix.
-    shotDisplay(shotRow, shotCol) = 9;
+    shotDisplay(shotRow, shotCol) = hit_sprite;
 else
     %Add the miss sprite to the shotDisplay matrix.
-    shotDisplay(shotRow, shotCol) = 10;
+    shotDisplay(shotRow, shotCol) = miss_sprite;
 end
 
 %Loop through each possible ship length

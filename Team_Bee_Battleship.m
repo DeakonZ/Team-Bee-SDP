@@ -34,37 +34,34 @@ computerShips = ones(10, 10);   %Matrix holds the locations of the computer's sh
 playerSunk = 0;                 %Holds the number of player ships sunk.
 computerSunk = 0;               %Holds the number of computer ships sunk.
 
-%% playerPlacement and computerPlacement Test Code
+%% Game Logic
 
-%[boardDisplay, shipMatrix] = playerPlacement(battleshipScene, boardDisplay, playerShips);
+%Display the starting score.
+xlabel({'Ships Sunk', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 
-for i = 1:100
+%Prompt the player to place their ships.
+[boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
+    
+%Call the 'computerPlacement' function.
 computerShips = computerPlacement(computerShips);
 
-computerShips = ones(10, 10);
-end
-
-%% playerShoot and checkSunk Test Code
-
-k = 1;
-while k <= 100
-    %Call the player shoot function and assign the output to the shot display.
+while playerSunk ~= 5 && computerSunk ~= 5
+    %Prompt the player to pick a location to shoot.
     [shotDisplay, boardDisplay, playerSunk] = playerShoot(battleshipScene, boardDisplay, shotDisplay, computerShips, playerSunk);
-
+    
     %Redraw the scene.
     drawScene(battleshipScene, boardDisplay, shotDisplay)
     
-    playerSunk
+    %Call the 'randomShot' function.
+    [shotDisplay, boardDisplay, playerSunk] = randomShot(battleshipScene, boardDisplay, shotDisplay, playerShips, playerSunk);
     
-    k = k + 1;
-end
-
-%% Game Logic
-while playerSunk ~= 5 && computerSunk ~= 5
     %Check if either the player or computer has sunk all of the ships.
     if playerSunk == 5
         title('The Player has sunk all of the Computers ships!')
     elseif computerSunk == 5
         title('The Computer has sunk all of the Players ships!')
     end 
+    
+    %Update the current score.
+    xlabel({'Ships Sunk', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 end
