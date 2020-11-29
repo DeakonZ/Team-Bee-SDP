@@ -17,8 +17,10 @@ finished_matrix = build_ship(obj,5,ship_matrix);
 for i = 1:10
    for j = 1:10
       if finished_matrix(i,j) == 5
-         if finished_matrix(i+1,j) == finished_matrix(i,j)
-             vertical = 1;
+         if i ~= 10
+             if finished_matrix(i+1,j) == finished_matrix(i,j)
+                 vertical = 1;
+             end
          end
          if vertical == 1
              board_display(i,j) = top_ship_sprite;
@@ -53,8 +55,10 @@ ship_complete = 0;
 for i = 1:10
    for j = 1:10
       if finished_matrix(i,j) == 4
-         if finished_matrix(i+1,j) == finished_matrix(i,j)
-             vertical = 1;
+         if i ~= 10
+             if finished_matrix(i+1,j) == finished_matrix(i,j)
+                 vertical = 1;
+             end
          end
          if vertical == 1
              board_display(i,j) = top_ship_sprite;
@@ -83,12 +87,14 @@ drawScene(obj,board_display)
 %build ship 3
 vertical = 0;
 ship_complete = 0;
-finished_matrix = build_ship(obj,3,ship_matrix);
+finished_matrix = build_ship(obj,3,finished_matrix);
 for i = 1:10
    for j = 1:10
       if finished_matrix(i,j) == 3
-         if finished_matrix(i+1,j) == finished_matrix(i,j)
-             vertical = 1;
+         if i ~= 10
+             if finished_matrix(i+1,j) == finished_matrix(i,j)
+                 vertical = 1;
+             end
          end
          if vertical == 1
              board_display(i,j) = top_ship_sprite;
@@ -115,12 +121,14 @@ drawScene(obj,board_display)
 %build ship 4
 vertical = 0;
 ship_complete = 0;
-finished_matrix = build_ship(obj,3,ship_matrix);
+finished_matrix = build_ship(obj,3,finished_matrix);
 for i = 1:10
    for j = 1:10
       if finished_matrix(i,j) == 3
-         if finished_matrix(i+1,j) == finished_matrix(i,j)
-             vertical = 1;
+         if i ~= 10
+             if finished_matrix(i+1,j) == finished_matrix(i,j)
+                 vertical = 1;
+             end
          end
          if vertical == 1
              board_display(i,j) = top_ship_sprite;
@@ -148,12 +156,14 @@ drawScene(obj,board_display)
 
 vertical = 0;
 ship_complete = 0;
-finished_matrix = build_ship(obj,2,ship_matrix);
+finished_matrix = build_ship(obj,2,finished_matrix);
 for i = 1:10
    for j = 1:10
       if finished_matrix(i,j) == 2
-         if finished_matrix(i+1,j) == finished_matrix(i,j)
-             vertical = 1;
+         if i ~= 10
+             if finished_matrix(i+1,j) == finished_matrix(i,j)
+                 vertical = 1;
+             end
          end
          if vertical == 1
              board_display(i,j) = top_ship_sprite;

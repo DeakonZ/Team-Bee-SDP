@@ -1,4 +1,4 @@
-function finished_matrix = build_ship(obj,ship_length,matrix)
+function matrix = build_ship(obj,ship_length,matrix)
 %BUILD_SHIP Creates the ships.
 
 
@@ -58,6 +58,5 @@ horizontal = 0;
           end
       end
   end
-        finished_matrix = matrix;
         title("")
 end
