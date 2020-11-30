@@ -1,16 +1,5 @@
-%Team Bee Battleship Script
-%Written by Parker Stuebs, Caleb Bucher, Varsha Govardhanam, Deakon Ziegler
-%Created for the ENGR 1181.01 Software Design Project.
-
-clear
-clc
-
-%% Main Menu
-
-%Initalize the scene using the Battleship_Menu.png sprites.
-mainMenu = simpleGameEngine('Battleship_Menu.png', 84, 84);
-
-
+function [] = battleShip()
+%BATTLESHIP Displays a figure and allows the user to play Battle Ship.
 
 %% Base Board Creation
 
@@ -73,3 +62,6 @@ while playerSunk ~= 5 && computerSunk ~= 5
     %Update the current score.
     xlabel({'Score', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 end
+
+end
+
