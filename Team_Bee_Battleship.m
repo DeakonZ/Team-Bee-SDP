@@ -48,13 +48,13 @@ computerShips = computerPlacement(computerShips);
 
 while playerSunk ~= 5 && computerSunk ~= 5
     %Prompt the player to pick a location to shoot.
-    [shotDisplay, boardDisplay, playerSunk] = playerShoot(battleshipScene, boardDisplay, shotDisplay, computerShips, playerSunk);
+    [shotDisplay, boardDisplay, computerShips, playerSunk] = playerShoot(battleshipScene, boardDisplay, shotDisplay, computerShips, playerSunk);
     
     %Redraw the scene.
     drawScene(battleshipScene, boardDisplay, shotDisplay)
     
     %Call the 'randomShot' function.
-    [shotDisplay, boardDisplay, playerSunk] = randomShot(battleshipScene, boardDisplay, shotDisplay, playerShips, playerSunk);
+    [shotDisplay, boardDisplay, playerShips, computerSunk] = randomShot(battleshipScene, boardDisplay, shotDisplay, playerShips, computerSunk);
     
     %Check if either the player or computer has sunk all of the ships.
     if playerSunk == 5

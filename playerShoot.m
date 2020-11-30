@@ -1,4 +1,4 @@
-function [shotDisplay, boardDisplay, playerSunk] = playerShoot(obj, boardDisplay, shotDisplay, shipMatrix, playerSunk)
+function [shotDisplay, boardDisplay, shipMatrix, playerSunk] = playerShoot(obj, boardDisplay, shotDisplay, shipMatrix, playerSunk)
 %PLAYERSHOOT Prompts the player to pick a location to shoot.
 
 %Sprite variables.
@@ -29,7 +29,7 @@ end
 %Loop through each possible ship length
 for shipLength = 2 : 5
     %Check if the ship has been sunk.
-    [boardDisplay, playerSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, playerSunk, 1);
+    [boardDisplay, shipMatrix, playerSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, playerSunk, 1);
 
     %Redraw the scene.
     drawScene(obj, boardDisplay, shotDisplay)

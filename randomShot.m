@@ -1,4 +1,4 @@
-function [shotDisplay, boardDisplay, numSunk] = randomShot(obj, boardDisplay, shotDisplay, shipMatrix, numSunk)
+function [shotDisplay, boardDisplay, shipMatrix, numSunk] = randomShot(obj, boardDisplay, shotDisplay, shipMatrix, numSunk)
 %RANDOMSHOT Randomly pick a place to shoot.
 %   For the computer player.
 
@@ -29,7 +29,7 @@ end
 %Loop through each possible ship length
 for shipLength = 2: 5
     %Check if the ship has been sunk.
-    [boardDisplay, numSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, numSunk, 0);
+    [boardDisplay, shipMatrix, numSunk] = checkSunk(boardDisplay, shotDisplay, shipMatrix, shipLength, numSunk, 0);
 
     %Redraw the scene.
     drawScene(obj, boardDisplay, shotDisplay)
