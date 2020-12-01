@@ -1,5 +1,5 @@
-function [shotDisplay, boardDisplay, shipMatrix, numSunk] = randomShot(obj, boardDisplay, shotDisplay, shipMatrix, numSunk)
-%RANDOMSHOT Randomly pick a place to shoot.
+function [shotDisplay, boardDisplay, shipMatrix, numSunk] = randomShoot(obj, boardDisplay, shotDisplay, shipMatrix, numSunk)
+%RANDOMSHOOT Randomly pick a place to shoot.
 %   For the computer player.
 
 %Sprite variables.
