@@ -17,11 +17,11 @@ drawScene(battleshipScene, boardDisplay)                            %Displays th
 set(battleshipScene.my_figure, 'Position', [286, 258, 1350, 708])   %Resize the display to better fit the scoreboard.
 
 %Game Variables
-shotDisplay = ones(10, 21);     %Matrix Holds the hit/miss sprites for display.
-playerShips = zeros(10, 10);     %Matrix holds the locations of the player's ships.
-computerShips = zeros(10, 10);   %Matrix holds the locations of the computer's ships.
-playerSunk = 0;                 %Holds the number of player ships sunk.
-computerSunk = 0;               %Holds the number of computer ships sunk.
+shotDisplay = ones(10, 21);         %Matrix Holds the hit/miss sprites for display.
+playerShips = zeros(10, 10);        %Matrix holds the locations of the player's ships.
+computerShips = zeros(10, 10);      %Matrix holds the locations of the computer's ships.
+playerSunk = 0;                     %Holds the number of player ships sunk.
+computerSunk = 0;                   %Holds the number of computer ships sunk.
 
 %% Game Logic
 
@@ -29,7 +29,7 @@ computerSunk = 0;               %Holds the number of computer ships sunk.
 xlabel({'Score', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 
 %Prompt the player to place their ships.
-[boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
+%[boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
 
 %Call the 'computerPlacement' function.
 computerShips = computerPlacement(computerShips);
