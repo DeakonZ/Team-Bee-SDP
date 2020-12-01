@@ -1,4 +1,4 @@
-function [] = battleShip(watDifficulty)
+function [] = battleShip(difficulty)
 %BATTLESHIP Displays a figure and allows the user to play Battle Ship.
 
 %% Board Creation
@@ -45,7 +45,7 @@ while playerSunk ~= 5 && computerSunk ~= 5
     drawScene(battleshipScene, boardDisplay, shotDisplay)
     
     %Check the difficulty.
-    if (watDifficulty == 1)
+    if (difficulty == 1)
         %Call the 'smartShoot' function.
         [shotDisplay, boardDisplay, playerShips, previousHit, computerSunk] = smartShoot(battleshipScene, boardDisplay, shotDisplay, playerShips, previousHit, computerSunk);
     else
