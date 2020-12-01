@@ -92,8 +92,11 @@ if (clickCol > 1 && clickCol < 8)
     
     %Loop while 'exitGame' is false.
     while ~exitGame
+        %Call the 'pickDifficulty' function.
+        difficulty = pickDifficulty();
+        
         %Call the 'battleShip' function.
-        battleShip();
+        battleShip(difficulty);
         
         %Call the 'playAgain' function to prompt the player if they want to play again.
         exitGame = playAgain();

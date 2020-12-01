@@ -1,7 +1,5 @@
-function [] = battleShip()
+function [] = battleShip(watDifficulty)
 %BATTLESHIP Displays a figure and allows the user to play Battle Ship.
-
-clc, clear
 
 %% Board Creation
 
@@ -31,14 +29,13 @@ computerSunk = 0;               %Holds the number of computer ships sunk.
 xlabel({'Score', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 
 %Prompt the player to place their ships.
-%[boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
-    
-playerShips = computerPlacement(playerShips);
+[boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
 
 %Call the 'computerPlacement' function.
 computerShips = computerPlacement(computerShips);
 
-    previousHit = 0;
+%Initalize 'previousHit'.
+previousHit = [0, 0];
 
 while playerSunk ~= 5 && computerSunk ~= 5
     %Prompt the player to pick a location to shoot.
@@ -47,11 +44,14 @@ while playerSunk ~= 5 && computerSunk ~= 5
     %Redraw the scene.
     drawScene(battleshipScene, boardDisplay, shotDisplay)
     
-    %Call the 'randomShot' function.
-    %[shotDisplay, boardDisplay, playerShips, computerSunk] = randomShoot(battleshipScene, boardDisplay, shotDisplay, playerShips, computerSunk);
-    
-
-    [shotDisplay, boardDisplay, playerShips, previousHit, computerSunk] = smartShoot(battleshipScene, boardDisplay, shotDisplay, playerShips, previousHit, computerSunk);
+    %Check the difficulty.
+    if (watDifficulty == 1)
+        %Call the 'smartShoot' function.
+        [shotDisplay, boardDisplay, playerShips, previousHit, computerSunk] = smartShoot(battleshipScene, boardDisplay, shotDisplay, playerShips, previousHit, computerSunk);
+    else
+        %Call the 'randomShot' function.
+        [shotDisplay, boardDisplay, playerShips, computerSunk] = randomShoot(battleshipScene, boardDisplay, shotDisplay, playerShips, computerSunk);
+    end
     
     %Check if either the player or computer has sunk all of the ships.
     if playerSunk == 5
