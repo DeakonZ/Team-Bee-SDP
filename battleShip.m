@@ -29,7 +29,7 @@ computerSunk = 0;                   %Holds the number of computer ships sunk.
 xlabel({'Score', [['Player: ' num2str(playerSunk)], '                                                    ', ['Computer: ' num2str(computerSunk)]]})
 
 %Prompt the player to place their ships.
-%[boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
+[boardDisplay, playerShips] = playerPlacement(battleshipScene, boardDisplay, playerShips);
 
 %Call the 'computerPlacement' function.
 computerShips = computerPlacement(computerShips);
